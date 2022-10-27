@@ -1,14 +1,27 @@
 import React from "react";
-import { NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+
+export const NavbarLink = styled(Link)`
+color:white;
+text-decoration: none;
+margin: 10px;
+&:hover {
+  background-image: url("https://c.tenor.com/BgR83Df82t0AAAAj/portal-rick-and-morty.gif");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  color: rgba(151, 206, 76, 0);
+  cursor: url("./img/cursor.cur"), auto;
+}`
 
 function Navbar() {
-  
   return (
     <div className="navBar">
-      <NavLink to="/">Home</NavLink>
-      <Link to="/character">Characters</Link>
-      <Link to="/location" >Locations</Link>
-      <Link to="/episode" >Episodes</Link>
+      <NavbarLink to="/">Home</NavbarLink>
+      <NavbarLink to="/character">Characters</NavbarLink>
+      <NavbarLink to="/location">Locations</NavbarLink>
+      <NavbarLink to="/episode">Episodes</NavbarLink>
     </div>
   );
 }

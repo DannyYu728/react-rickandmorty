@@ -1,6 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Sigmar+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+
 * {
-justify-content: center;
-align-items: center;
+  font-family: 'Luckiest Guy', cursive;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  color: black;
+  font-family: 'Sigmar One', cursive;
+  font-size: 5rem;
+  animation: 2s Blazing infinite alternate linear;
 }
 
 .wrapper {
@@ -9,6 +20,7 @@ align-items: center;
   color: white;
   height: 100vh;
   width: 100vw;
+  cursor: url("../img/cursor.cur"), auto;
 }
 
 .navBar {
@@ -16,18 +28,47 @@ align-items: center;
   align-self: flex-start;
   justify-content: flex-end;
   gap: 1rem;
-  background: grey;
+  background-color: rgba(45, 45, 45, 1);
   width: 100vw;
   padding-right: 1rem;
 }
 
-.character, .location, .episode {
+.home {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100vh;
+  width: 100vw;
+  background-color: #f0e14a;
+}
+
+.title {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+.character,
+.location,
+.episode {
   display: flex;
   position: fixed;
   z-index: -1;
   height: 100vh;
   width: 100vw;
-  background: blue;
+  background-position: center;
+  background-size: cover;
+}
+
+.character {
+  background-image: url("https://images6.alphacoders.com/909/thumb-1920-909641.png");
+}
+
+.location {
+  background-image: url("https://wallpapermoon.com/wp-content/uploads/2022/06/01740190.jpg");
+}
+
+.episode {
+  background-image: url("https://images.hdqwalls.com/wallpapers/rick-and-morty-uy.jpg");
 }
 
 .page {
@@ -45,17 +86,26 @@ align-items: center;
 }
 
 .bottom {
+  color: rgb(251, 7, 7);
   display: flex;
   align-self: flex-end;
   width: 100vw;
   gap: 5rem;
-  background-color: aquamarine;
 }
 
 .btns {
-  display: flex;
-  width: 5rem;
-  padding: 0.1rem;
+  width: 80px;
+  height: 80px;
+  filter: drop-shadow(1px 8px 5px green);
+  background-image: url("https://i.gifer.com/origin/99/99dd4a153bb847e79a1617db8f1c620a.gif");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 80px 80px;
+}
+
+.prev {
+  transform: scaleX(-1);
+  filter: drop-shadow(1px 8px 5px red);
 }
 
 .info {
@@ -67,34 +117,144 @@ align-items: center;
   height: 10rem;
   width: 10rem;
   padding: 10px;
+  animation: 4s infinite alternate gradient;
+  filter: drop-shadow(7px 7px 10px black);
+}
+
+.info:hover {
+  transform: scale(1.2);
+  z-index: 1;
 }
 
 img {
   border: 1px solid rgba(45, 45, 45, 1);
-  border-radius: 20%;
+  border-radius: 50%;
   width: 10rem;
   height: 10rem;
+  animation: 3s infinite alternate rotate;
+}
+
+.modalImg {
+  all: unset;
+  border-radius: 10%;
+  width: 20rem;
+  height: 20rem;
 }
 
 .mainModal {
+  z-index: 999;
   background-color: rgba(45, 45, 45, 0.5);
   display: flex;
   flex-direction: column;
   position: fixed;
-  width: 100%;
   height: 100%;
+  width: 100%;
+  animation: smooth 0.7s;
+}
 
+@keyframes smooth {
+  0% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: rotate(1);
+  }
 }
 
 .modal {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  width: 50%;
-  height: 50%;
+  height: 80vh;
+  width: 50vw;
+  border-radius: 20%;
+  color: #97ce4c;
   background-color: rgba(45, 45, 45, 0.8);
+}
+
+.modalP {
+  text-align: center;
+  border-radius: 50%;
+  border-top: 1px solid rgb(198, 16, 16);
+  width: 100%;
 }
 
 .hidden {
   display: none;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(-20deg);
+  }
+
+  to {
+    transform: rotate(20deg);
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-color: #e89ac7;
+  }
+
+  25% {
+    background-color: #76b1eb;
+  }
+
+  50% {
+    background-color: #eb4614;
+  }
+
+  100% {
+    background-color: #8504b9;
+  }
+}
+
+@keyframes Blazing {
+  0% {
+    text-shadow: 0 3px 20px #057d0d, 0 0 20px #057d0d,
+      0 0 10px #19cd25,
+      0 0 0 #97ce4c,
+      0 0 5px #97ce4c,
+      -2px -5px 5px #97ce4c,
+      4px -10px 10px #97ce4c;
+  }
+
+  25% {
+    text-shadow: 0 3px 20px #057d0d, 0 0 30px #057d0d,
+      0 0 20px #19cd25,
+      0 0 5px #97ce4c,
+      -2px -5px 5px #97ce4c,
+      3px -10px 10px #97ce4c,
+      -4px -15px 20px #97ce4c;
+  }
+
+  50% {
+    text-shadow: 0 3px 20px #057d0d, 0 0 20px #057d0d,
+      0 -5px 10px #19cd25,
+      -2px -5px 5px #97ce4c,
+      3px -10px 10px #97ce4c,
+      -4px -15px 20px #97ce4c,
+      2px -20px 30px rgba(255, 255, 0, 0.5);
+  }
+
+  75% {
+    text-shadow: 0 3px 20px #057d0d, 0 0 20px #057d0d,
+      0 -5px 10px #19cd25,
+      3px -5px 5px #97ce4c,
+      -4px -10px 10px #97ce4c,
+      2px -20px 30px rgba(255, 255, 0, 0.5),
+      0px -25px 40px rgba(255, 255, 0, 0)
+  }
+
+  100% {
+    text-shadow: 0 3px 20px #057d0d, 0 0 20px #057d0d,
+      0 0 10px #19cd25,
+      0 0 0 #97ce4c,
+      0 0 5px #97ce4c,
+      -2px -5px 5px #97ce4c,
+      4px -10px 10px #97ce4c;
+  }
 }

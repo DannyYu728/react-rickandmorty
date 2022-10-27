@@ -25,8 +25,6 @@ function Fetch() {
       let response = await axios(ramUrl + `${id}?page=${pageNum}`);
       setPageCount(response.data.info.pages);
       setInfos(response.data.results);
-      console.log(infos);
-      console.log(pageCount);
     };
     getPage();
   }, [pageNum, location]);
@@ -55,13 +53,11 @@ function Fetch() {
         })}
       </div>
       <div className="bottom">
-        <button className="btns" onClick={pageDown}>
-          Previous
-        </button>
+        <div className="btns prev" onClick={pageDown}>
+        </div>
         <p className="pageNumDisplay">{pageNum}</p>
-        <button className="btns" onClick={pageUp}>
-          Next
-        </button>
+        <div className="btns next" onClick={pageUp}>
+        </div>
       </div>
       <Modal modalInfo={modalInfo} />
     </div>
