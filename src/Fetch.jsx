@@ -13,12 +13,22 @@ function Fetch() {
   const [pageCount, setPageCount] = useState(0);
 
   let pageDown = () => {
-    setPageNum(pageNum - 1);
+    if (pageNum > pageCount) {
+      setPageNum(0);
+    } else if (pageNum > 1) {
+      setPageNum(pageNum - 1);
+    } else {
+      setPageNum(pageCount);
+    }
   };
 
   let pageUp = () => {
-    setPageNum(pageNum + 1);
-  };
+    if (pageNum < pageCount) {
+      setPageNum(pageNum + 1);
+    } else {
+      setPageNum(0);
+    }
+  }
 
   useEffect(() => {
     const getPage = async () => {
