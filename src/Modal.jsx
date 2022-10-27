@@ -11,6 +11,8 @@ function Modal(props) {
         document.querySelector(".mainModal").classList.add("hidden")
       }
     >
+      <div className="left"></div>
+      <div className="right"></div>
       {(() => {
         if (id == "character") {
           return (

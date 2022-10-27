@@ -7,11 +7,16 @@
   align-items: center;
 }
 
+body {
+  background-color: rgba(45, 45, 45, 1);
+}
+
 h1 {
   color: black;
   font-family: 'Sigmar One', cursive;
   font-size: 5rem;
-  animation: 2s Blazing infinite alternate linear;
+  transform: translateY(500px);
+  animation: 2s Blazing infinite alternate linear, slideUp 1s ease-in-out forwards .8s;
 }
 
 .wrapper {
@@ -45,6 +50,8 @@ h1 {
   display: flex;
   height: 100vh;
   width: 100vw;
+  animation: expand .5s ease forwards;
+  transition: all .5s ease;
 }
 
 .character,
@@ -57,10 +64,13 @@ h1 {
   width: 100vw;
   background-position: center;
   background-size: cover;
+  animation: expand .8s ease forwards;
+  transition: all .8s ease;
 }
 
 .character {
   background-image: url("https://images6.alphacoders.com/909/thumb-1920-909641.png");
+  
 }
 
 .location {
@@ -91,6 +101,8 @@ h1 {
   align-self: flex-end;
   width: 100vw;
   gap: 5rem;
+  transform: translateY(200px);
+  animation: slideUp 1s ease-in-out forwards .8s;
 }
 
 .btns {
@@ -104,7 +116,6 @@ h1 {
 }
 
 .prev {
-  transform: scaleX(-1);
   filter: drop-shadow(1px 8px 5px red);
 }
 
@@ -117,7 +128,7 @@ h1 {
   height: 10rem;
   width: 10rem;
   padding: 10px;
-  animation: 4s infinite alternate gradient;
+  animation: 4s infinite alternate gradient, slideIn 1.5s ease-in-out forwards;;
   filter: drop-shadow(7px 7px 10px black);
 }
 
@@ -149,17 +160,25 @@ img {
   position: fixed;
   height: 100%;
   width: 100%;
-  animation: smooth 0.7s;
 }
 
-@keyframes smooth {
-  0% {
-    transform: scale(0);
-  }
+.left, .right {
+all:unset;
+position: fixed;
+height: 100vh;
+width: 50%;
+}
 
-  100% {
-    transform: rotate(1);
-  }
+.left {
+  background-color: #f0e14a;
+  align-self: flex-start;
+  animation: 2s doorLeft ease-in-out forwards;
+}
+
+.right {
+  background-color: #19cd25;
+  align-self: flex-end;
+  animation: 2s doorRight ease-in-out forwards;
 }
 
 .modal {
@@ -171,6 +190,7 @@ img {
   border-radius: 20%;
   color: #97ce4c;
   background-color: rgba(45, 45, 45, 0.8);
+  animation: 4s delayShow ease-in;
 }
 
 .modalP {
@@ -182,6 +202,24 @@ img {
 
 .hidden {
   display: none;
+}
+
+@keyframes delayShow {
+  0% {
+    transform: scale(0);
+  }
+  10% {
+    transform: scale(0);
+  }
+  20% {
+    transform: scale(0);
+  }
+  30% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 @keyframes rotate {
@@ -258,3 +296,56 @@ img {
       4px -10px 10px #97ce4c;
   }
 }
+
+@keyframes expand {
+  0% {
+    transform: translateX(1400px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(500px) scale(.2);
+  }
+  100% {
+    transform: translateX(0px) scale(1);
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(300px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes doorLeft {
+  0% {
+    transform: translateX(-1400px);
+  }
+  50% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(-1400px);
+  }
+}
+
+@keyframes doorRight {
+  0% {
+    transform: translateX(1400px);
+  }
+  50% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(1400px);
+  }
+}
+
+
