@@ -8,13 +8,13 @@ function Fetch() {
   const { id } = useParams();
   const location = useLocation();
   const [infos, setInfos] = useState([]);
-  const [modalInfo, setModalInfo] = useState({})
-  const [pageNum, setPageNum] = useState(0);
+  const [modalInfo, setModalInfo] = useState({});
+  const [pageNum, setPageNum] = useState(1);
   const [pageCount, setPageCount] = useState(0);
 
   let pageDown = () => {
     if (pageNum > pageCount) {
-      setPageNum(0);
+      setPageNum(1);
     } else if (pageNum > 1) {
       setPageNum(pageNum - 1);
     } else {
@@ -26,9 +26,13 @@ function Fetch() {
     if (pageNum < pageCount) {
       setPageNum(pageNum + 1);
     } else {
-      setPageNum(0);
+      setPageNum(1);
     }
-  }
+  };
+
+  let handleChange = (e) => {
+    setPageNum(Number(e.target.value));
+  };
 
   useEffect(() => {
     const getPage = async () => {
@@ -40,7 +44,7 @@ function Fetch() {
   }, [pageNum, location]);
 
   let getModal = (ele) => {
-    setModalInfo(ele)
+    setModalInfo(ele);
     let main = document.querySelector(".mainModal");
     main.classList.remove("hidden");
   };
@@ -63,11 +67,20 @@ function Fetch() {
         })}
       </div>
       <div className="bottom">
-        <div className="btns prev" onClick={pageDown}>
-        </div>
-        <p className="pageNumDisplay">{pageNum}</p>
-        <div className="btns next" onClick={pageUp}>
-        </div>
+        <div className="btns prev" onClick={pageDown}></div>
+
+        <form>
+          <input
+            className="pageNumDisplay"
+            type="text"
+            size="2"
+            maxLength="2"
+            value={pageNum}
+            onChange={handleChange}
+          />
+        </form>
+
+        <div className="btns next" onClick={pageUp}></div>
       </div>
       <Modal modalInfo={modalInfo} />
     </div>
