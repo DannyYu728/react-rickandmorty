@@ -7,10 +7,10 @@ import Wrapper from "./Wrapper";
 
 function App() {
   return (
-      <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route path=":id" element={<Wrapper />} />
-      </Routes>
+    <Routes>
+      <Route exact path="/" element={<Home />} />
+      <Route path=":id" element={<Wrapper />}></Route>
+    </Routes>
   );
 }
 

@@ -11,6 +11,7 @@ function Fetch() {
   const [modalInfo, setModalInfo] = useState({});
   const [pageNum, setPageNum] = useState(1);
   const [pageCount, setPageCount] = useState(0);
+  const [searchName, setSearch] = useState("");
 
   let pageDown = () => {
     if (pageNum > pageCount) {
@@ -43,6 +44,17 @@ function Fetch() {
     getPage();
   }, [pageNum, location]);
 
+  const searchFetch = async (e) => {
+    e.preventDefault();
+    let response = await axios(ramUrl + `${id}?name=${searchName}`);
+    setInfos(response.data.results);
+  };
+
+  let handleSearch = (e) => {
+    e.preventDefault();
+    setSearch(e.target.value);
+  };
+
   let getModal = (ele) => {
     setModalInfo(ele);
     let main = document.querySelector(".mainModal");
@@ -51,6 +63,17 @@ function Fetch() {
 
   return (
     <div className="page">
+      <form onSubmit={searchFetch}>
+        <input
+          className="searchBar"
+          type="text"
+          size="20"
+          maxLength="20"
+          value={searchName}
+          onChange={handleSearch}
+          placeholder="Search..."
+        />
+      </form>
       <div className="display">
         {infos.map((ele, index) => {
           return (
@@ -68,7 +91,6 @@ function Fetch() {
       </div>
       <div className="bottom">
         <div className="btns prev" onClick={pageDown}></div>
-
         <form>
           <input
             className="pageNumDisplay"
@@ -79,7 +101,6 @@ function Fetch() {
             onChange={handleChange}
           />
         </form>
-
         <div className="btns next" onClick={pageUp}></div>
       </div>
       <Modal modalInfo={modalInfo} />

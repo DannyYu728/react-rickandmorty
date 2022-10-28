@@ -1,13 +1,14 @@
 import { useParams } from "react-router-dom";
 import ModInfo from "./ModInfo";
-const alts = "https://rare-gallery.com/thumbs/5001877-rick-and-morty-cartoons-tv-shows-hd-rick-morty-animated-tv-series-4k-artwork-artist-digital-art-behance.jpg";
+const alts =
+  "https://rare-gallery.com/thumbs/5001877-rick-and-morty-cartoons-tv-shows-hd-rick-morty-animated-tv-series-4k-artwork-artist-digital-art-behance.jpg";
 
 function Modal(props) {
   const { modalInfo } = props;
   const { id } = useParams();
-  const chTitles = ["Status", "Species"]
-  const loTitles = ["Type", "Dimension"]
-  const epTitles = ["Air Date", "Episodes"]
+  const chTitles = ["Status", "Species"];
+  const loTitles = ["Type", "Dimension"];
+  const epTitles = ["Air Date", "Episodes"];
 
   return (
     <div

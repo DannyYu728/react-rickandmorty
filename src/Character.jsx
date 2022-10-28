@@ -1,8 +1,4 @@
 function Character() {
-
-  return (
-    <div className="character">
-    </div>
-  );
+  return <div className="character"></div>;
 }
 export default Character;

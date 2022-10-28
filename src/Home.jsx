@@ -1,6 +1,6 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import Navbar from './Navbar'
+import Navbar from "./Navbar";
 
 function Home() {
   return (
@@ -9,8 +9,8 @@ function Home() {
       <div className="title">
         <h1>Rick and Morty</h1>
       </div>
- </div>
+    </div>
   );
 }
 
-export default Home
+export default Home;

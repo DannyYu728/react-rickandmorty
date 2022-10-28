@@ -8,29 +8,22 @@ import Navbar from "./Navbar";
 
 function Wrapper() {
   const { id } = useParams();
-  
-    return (
-      <div className="wrapper">
-        <Navbar />
-        <Fetch />
-      {(() => {
-        if (id == 'character') {
-          return (
-            <Character />
-          )
-        } else if (id == 'location') {
-          return (
-            <Location />
-          )
-        } else {
-          return (
-            <Episode />
-          )
-        }
-        })()}   
-    </div>
-    );
-}
 
+  return (
+    <div className="wrapper">
+      <Navbar />
+      <Fetch />
+      {(() => {
+        if (id == "character") {
+          return <Character />;
+        } else if (id == "location") {
+          return <Location />;
+        } else {
+          return <Episode />;
+        }
+      })()}
+    </div>
+  );
+}
 
 export default Wrapper;

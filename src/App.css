@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Sigmar+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Sigmar+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap");
 
 * {
-  font-family: 'Luckiest Guy', cursive;
+  font-family: "Luckiest Guy", cursive;
   justify-content: center;
   align-items: center;
 }
@@ -13,10 +13,11 @@ body {
 
 h1 {
   color: black;
-  font-family: 'Sigmar One', cursive;
+  font-family: "Sigmar One", cursive;
   font-size: 5rem;
   transform: translateY(500px);
-  animation: 2s Blazing infinite alternate linear, slideUp 1s ease-in-out forwards .8s;
+  animation: 2s Blazing infinite alternate linear,
+    slideUp 1s ease-in-out forwards 0.8s;
 }
 
 .wrapper {
@@ -50,8 +51,8 @@ h1 {
   display: flex;
   height: 100vh;
   width: 100vw;
-  animation: expand .5s ease forwards;
-  transition: all .5s ease;
+  animation: expand 0.5s ease forwards;
+  transition: all 0.5s ease;
 }
 
 .character,
@@ -64,13 +65,12 @@ h1 {
   width: 100vw;
   background-position: center;
   background-size: cover;
-  animation: expand .8s ease forwards;
-  transition: all .8s ease;
+  animation: expand 0.8s ease forwards;
+  transition: all 0.8s ease;
 }
 
 .character {
   background-image: url("https://images6.alphacoders.com/909/thumb-1920-909641.png");
-  
 }
 
 .location {
@@ -101,12 +101,16 @@ h1 {
   width: 100vw;
   gap: 5rem;
   transform: translateY(200px);
-  animation: slideUp 1s ease-in-out forwards .8s;
+  animation: slideUp 1s ease-in-out forwards 0.8s;
 }
 
 .pageNumDisplay {
-  background:transparent;
+  background: transparent;
   text-align: center;
+  color: red;
+}
+
+.searchBar {
   color: red;
 }
 
@@ -133,7 +137,7 @@ h1 {
   height: 10rem;
   width: 10rem;
   padding: 10px;
-  animation: 4s infinite alternate gradient, slideIn 1.5s ease-in-out forwards;;
+  animation: 4s infinite alternate gradient, slideIn 1.5s ease-in-out forwards;
   filter: drop-shadow(7px 7px 10px black);
 }
 
@@ -168,11 +172,12 @@ img {
   width: 100%;
 }
 
-.left, .right {
-all:unset;
-position: fixed;
-height: 100vh;
-width: 50%;
+.left,
+.right {
+  all: unset;
+  position: fixed;
+  height: 100vh;
+  width: 50%;
 }
 
 .left {
@@ -263,47 +268,32 @@ width: 50%;
 
 @keyframes Blazing {
   0% {
-    text-shadow: 0 3px 20px #057d0d, 0 0 20px #057d0d,
-      0 0 10px #19cd25,
-      0 0 0 #97ce4c,
-      0 0 5px #97ce4c,
-      -2px -5px 5px #97ce4c,
+    text-shadow: 0 3px 20px #057d0d, 0 0 20px #057d0d, 0 0 10px #19cd25,
+      0 0 0 #97ce4c, 0 0 5px #97ce4c, -2px -5px 5px #97ce4c,
       4px -10px 10px #97ce4c;
   }
 
   25% {
-    text-shadow: 0 3px 20px #057d0d, 0 0 30px #057d0d,
-      0 0 20px #19cd25,
-      0 0 5px #97ce4c,
-      -2px -5px 5px #97ce4c,
-      3px -10px 10px #97ce4c,
+    text-shadow: 0 3px 20px #057d0d, 0 0 30px #057d0d, 0 0 20px #19cd25,
+      0 0 5px #97ce4c, -2px -5px 5px #97ce4c, 3px -10px 10px #97ce4c,
       -4px -15px 20px #97ce4c;
   }
 
   50% {
-    text-shadow: 0 3px 20px #057d0d, 0 0 20px #057d0d,
-      0 -5px 10px #19cd25,
-      -2px -5px 5px #97ce4c,
-      3px -10px 10px #97ce4c,
-      -4px -15px 20px #97ce4c,
+    text-shadow: 0 3px 20px #057d0d, 0 0 20px #057d0d, 0 -5px 10px #19cd25,
+      -2px -5px 5px #97ce4c, 3px -10px 10px #97ce4c, -4px -15px 20px #97ce4c,
       2px -20px 30px rgba(255, 255, 0, 0.5);
   }
 
   75% {
-    text-shadow: 0 3px 20px #057d0d, 0 0 20px #057d0d,
-      0 -5px 10px #19cd25,
-      3px -5px 5px #97ce4c,
-      -4px -10px 10px #97ce4c,
-      2px -20px 30px rgba(255, 255, 0, 0.5),
-      0px -25px 40px rgba(255, 255, 0, 0)
+    text-shadow: 0 3px 20px #057d0d, 0 0 20px #057d0d, 0 -5px 10px #19cd25,
+      3px -5px 5px #97ce4c, -4px -10px 10px #97ce4c,
+      2px -20px 30px rgba(255, 255, 0, 0.5), 0px -25px 40px rgba(255, 255, 0, 0);
   }
 
   100% {
-    text-shadow: 0 3px 20px #057d0d, 0 0 20px #057d0d,
-      0 0 10px #19cd25,
-      0 0 0 #97ce4c,
-      0 0 5px #97ce4c,
-      -2px -5px 5px #97ce4c,
+    text-shadow: 0 3px 20px #057d0d, 0 0 20px #057d0d, 0 0 10px #19cd25,
+      0 0 0 #97ce4c, 0 0 5px #97ce4c, -2px -5px 5px #97ce4c,
       4px -10px 10px #97ce4c;
   }
 }
@@ -319,7 +309,7 @@ width: 50%;
 
 @keyframes slideIn {
   0% {
-    transform: translateX(500px) scale(.2);
+    transform: translateX(500px) scale(0.2);
   }
   100% {
     transform: translateX(0px) scale(1);
@@ -358,5 +348,3 @@ width: 50%;
     transform: translateX(1400px);
   }
 }
-
-
