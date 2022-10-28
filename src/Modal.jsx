@@ -1,8 +1,13 @@
 import { useParams } from "react-router-dom";
+import ModInfo from "./ModInfo";
+const alts = "https://rare-gallery.com/thumbs/5001877-rick-and-morty-cartoons-tv-shows-hd-rick-morty-animated-tv-series-4k-artwork-artist-digital-art-behance.jpg";
 
 function Modal(props) {
   const { modalInfo } = props;
   const { id } = useParams();
+  const chTitles = ["Status", "Species"]
+  const loTitles = ["Type", "Dimension"]
+  const epTitles = ["Air Date", "Episodes"]
 
   return (
     <div
@@ -16,31 +21,36 @@ function Modal(props) {
       {(() => {
         if (id == "character") {
           return (
-            <div className="modal">
-              <img className="modalImg" src={modalInfo.image} />
-              <p className="modalP"> ID: {modalInfo.id}</p>
-              <p className="modalP">  Name: {modalInfo.name}</p>
-              <p className="modalP">Status: {modalInfo.status}</p>
-              <p className="modalP">Species: {modalInfo.species}</p>
-            </div>
+            <ModInfo
+              urls={modalInfo.image}
+              ids={modalInfo.id}
+              names={modalInfo.name}
+              p3s={modalInfo.status}
+              p4s={modalInfo.species}
+              titles={chTitles}
+            />
           );
         } else if (id == "location") {
           return (
-            <div className="modal">
-              <p className="modalP">ID: {modalInfo.id}</p>
-              <p className="modalP">Name: {modalInfo.name}</p>
-              <p className="modalP">Type: {modalInfo.type}</p>
-              <p className="modalP">Dimension: {modalInfo.dimension}</p>
-            </div>
+            <ModInfo
+              urls={alts}
+              ids={modalInfo.id}
+              names={modalInfo.name}
+              p3s={modalInfo.type}
+              p4s={modalInfo.dimension}
+              titles={loTitles}
+            />
           );
         } else {
           return (
-            <div className="modal">
-              <p className="modalP">ID: {modalInfo.id}</p>
-              <p className="modalP">Name: {modalInfo.name}</p>
-              <p className="modalP">Status: {modalInfo.air_date}</p>
-              <p className="modalP">Species: {modalInfo.episode}</p>
-            </div>
+            <ModInfo
+              urls={alts}
+              ids={modalInfo.id}
+              names={modalInfo.name}
+              p3s={modalInfo.air_date}
+              p4s={modalInfo.episode}
+              titles={epTitles}
+            />
           );
         }
       })()}

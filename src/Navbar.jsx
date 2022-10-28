@@ -5,7 +5,7 @@ import styled from "styled-components";
 export const NavbarLink = styled(Link)`
 color:white;
 text-decoration: none;
-margin: 10px;
+padding: 0.3rem;
 &:hover {
   background-image: url("https://c.tenor.com/BgR83Df82t0AAAAj/portal-rick-and-morty.gif");
   background-position: center;
@@ -27,3 +27,4 @@ function Navbar() {
 }
 
 export default Navbar;
+
