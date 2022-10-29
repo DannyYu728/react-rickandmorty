@@ -22,7 +22,7 @@ function ModInfo(props) {
   }, [ids, location]);
 
   return (
-    <div className="modal">
+    <div className="modal hidden">
       <img className="modalImg" src={url} />
       <p className="modalP"> ID: {id}</p>
       <p className="modalP"> Name: {name}</p>

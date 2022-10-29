@@ -22,14 +22,38 @@ const Title = styled.div`
 
 function Navbar() {
   const [title, setTitle] = useState("");
+  const [toggle, setToggle] = useState(false);
   const { id } = useParams();
 
   useEffect(() => {
-    const changeTitle = async () => {
+    const changeTitle = () => {
       setTitle(id);
     };
     changeTitle();
   }, [id]);
+
+  const delay = (duration) => {
+    return new Promise((res) => {
+      setTimeout(res, duration);
+    });
+  };
+
+  let show = async () => {
+    const bar = document.querySelector(".searchBar");
+    const bar2 = document.querySelector(".searchBar2");
+    if (!toggle) {
+      bar.classList.remove("hidden");
+      bar.classList.remove("goAway");
+      bar2.classList.remove("goAway");
+      setToggle(true);
+    } else {
+      bar.classList.add("goAway");
+      bar2.classList.add("goAway");
+      await delay(1500);
+      bar.classList.add("hidden");
+      setToggle(false);
+    }
+  };
 
   return (
     <div className="navBar">
@@ -46,7 +70,9 @@ function Navbar() {
       <NavbarLink to="/episode">
         <div className="material-symbols-outlined">Tv</div>
       </NavbarLink>
-      <div className="material-symbols-outlined">search</div>
+      <div onClick={show} className="material-symbols-outlined">
+        search
+      </div>
     </div>
   );
 }

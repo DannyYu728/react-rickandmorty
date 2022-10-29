@@ -10,13 +10,15 @@ function Modal(props) {
   const loTitles = ["Type", "Dimension"];
   const epTitles = ["Air Date", "Episodes"];
 
+  const hideModal = () => {
+    document.querySelector(".mainModal").classList.add("hidden")
+    document.querySelector(".modal").classList.add("hidden")
+  }
+
   return (
     <div
       className="mainModal hidden"
-      onClick={() =>
-        document.querySelector(".mainModal").classList.add("hidden")
-      }
-    >
+      onClick={hideModal}>
       <div className="left"></div>
       <div className="right"></div>
       {(() => {

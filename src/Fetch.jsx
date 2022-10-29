@@ -35,6 +35,12 @@ function Fetch() {
     setPageNum(Number(e.target.value));
   };
 
+  const delay = (duration) => {
+    return new Promise((res) => {
+      setTimeout(res, duration);
+    });
+  };
+
   useEffect(() => {
     const getPage = async () => {
       let response = await axios(ramUrl + `${id}?page=${pageNum}`);
@@ -44,8 +50,22 @@ function Fetch() {
     getPage();
   }, [pageNum, location]);
 
+  const searchAnimation = async () => {
+    let div = document.querySelector(".load");
+    div.classList.remove("hidden");
+    document.querySelector(".searchBar").classList.add("goAway");
+    document.querySelector(".searchBar2").classList.add("goAway");
+    await delay(2000);
+    document.querySelector(".searchBar").classList.add("hidden");
+    setTimeout(() => {
+      div.classList.add("hidden");
+    }, 2000);
+  };
+
   const searchFetch = async (e) => {
     e.preventDefault();
+    searchAnimation();
+    await delay(2000);
     let response = await axios(ramUrl + `${id}?name=${searchName}`);
     setInfos(response.data.results);
   };
@@ -54,26 +74,29 @@ function Fetch() {
     e.preventDefault();
     setSearch(e.target.value);
   };
-
-  let getModal = (ele) => {
-    setModalInfo(ele);
+  let getModal = async (ele) => {
     let main = document.querySelector(".mainModal");
+    let modal = document.querySelector(".modal");
+    setModalInfo(ele);
     main.classList.remove("hidden");
+    await delay(1700);
+    modal.classList.remove("hidden");
   };
 
   return (
     <div className="page">
-      <form onSubmit={searchFetch}>
-        <input
-          className="searchBar"
-          type="text"
-          size="20"
-          maxLength="20"
-          value={searchName}
-          onChange={handleSearch}
-          placeholder="Search..."
-        />
-      </form>
+      <div className="searchBar hidden goAway">
+        <form onSubmit={searchFetch}>
+          <input
+            className="searchBar2 goAway"
+            type="text"
+            maxLength="20"
+            value={searchName}
+            onChange={handleSearch}
+            placeholder="Search..."
+          />
+        </form>
+      </div>
       <div className="display">
         {infos.map((ele, index) => {
           return (
@@ -104,6 +127,7 @@ function Fetch() {
         <div className="btns next" onClick={pageUp}></div>
       </div>
       <Modal modalInfo={modalInfo} />
+      <div className="load hidden"></div>
     </div>
   );
 }
