@@ -110,6 +110,7 @@ h1 {
 }
 
 .searchBar {
+  text-align: center;
   z-index: 999;
   background-color: rgba(45, 45, 45, 0.9);
   display: flex;
@@ -117,7 +118,7 @@ h1 {
   position: fixed;
   height: 20%;
   width: 20%;
-  border-radius: 50%;
+  border-radius: 20%;
   animation: closer 1s ease-in-out;
   transition: all 2s;
 }
@@ -125,7 +126,7 @@ h1 {
 .searchBar2 {
   font-size: 1.2rem;
   color: red;
-  width: 10rem;
+  width: 75%;
   height: 2rem;
   transition: all 2s;
 }
@@ -190,11 +191,40 @@ img {
 }
 
 .load {
-  position: fixed;
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
   z-index: 100;
   height: 105vh;
-  width: 100vw;
+  width: 100%;
+  
+}
+
+.load1 {
+  height: 105vh;
+  width: 25%;
   background-color: #f0e14a;
+  animation: 7s slidedown ease;
+}
+
+.load2 {
+  height: 105vh;
+  width: 25%;
+  background-color: red;
+  animation: 6s slidedown ease;
+}
+
+.load3 {
+  height: 105vh;
+  width: 25%;
+  background-color: blue;
+  animation: 5s slidedown ease;
+}
+
+.load4 {
+  height: 105vh;
+  width: 25%;
+  background-color: green;
   animation: 4s slidedown ease;
 }
 
@@ -250,6 +280,10 @@ img {
 .goAway {
   width: 0;
   height: 0;
+}
+
+.invis {
+  opacity: 0;
 }
 
 @keyframes closer {

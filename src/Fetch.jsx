@@ -52,14 +52,21 @@ function Fetch() {
 
   const searchAnimation = async () => {
     let div = document.querySelector(".load");
+    let search = document.querySelector(".searchBar")
+    let bar = document.querySelector(".searchBar2")
+    let load3 = document.querySelector(".load3");
+    let load4 = document.querySelector(".load4");
     div.classList.remove("hidden");
-    document.querySelector(".searchBar").classList.add("goAway");
-    document.querySelector(".searchBar2").classList.add("goAway");
+    search.classList.add("goAway");
+    bar.classList.add("goAway");
+    await delay(4000);
+    search.classList.add("hidden");
+    load3.classList.add("invis");
+    load4.classList.add("invis");
     await delay(2000);
-    document.querySelector(".searchBar").classList.add("hidden");
-    setTimeout(() => {
-      div.classList.add("hidden");
-    }, 2000);
+    div.classList.add("hidden")
+    load3.classList.remove("invis");
+    load4.classList.remove("invis");
   };
 
   const searchFetch = async (e) => {
@@ -68,6 +75,7 @@ function Fetch() {
     await delay(2000);
     let response = await axios(ramUrl + `${id}?name=${searchName}`);
     setInfos(response.data.results);
+    setSearch("");
   };
 
   let handleSearch = (e) => {
@@ -127,7 +135,12 @@ function Fetch() {
         <div className="btns next" onClick={pageUp}></div>
       </div>
       <Modal modalInfo={modalInfo} />
-      <div className="load hidden"></div>
+      <div className="load hidden">
+        <div className=" load1 "></div>
+        <div className=" load2 "></div>
+        <div className=" load3 "></div>
+        <div className=" load4 "></div>
+      </div>
     </div>
   );
 }
