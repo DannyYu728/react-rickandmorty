@@ -22,7 +22,7 @@ function Wrapper() {
   return (
     <div className="wrapper">
       <Navbar show={show} />
-      <Fetch showSearch={showSearch} />
+      <Fetch showSearch={showSearch} setShowSearch={setShowSearch} />
       {(() => {
         if (id == "character") {
           return <Character />;

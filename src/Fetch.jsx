@@ -4,7 +4,7 @@ import { useParams, useLocation } from "react-router-dom";
 import axios from "axios";
 const ramUrl = "https://rickandmortyapi.com/api/";
 
-function Fetch({ showSearch }) {
+function Fetch({ showSearch, setShowSearch }) {
   const { id } = useParams();
   const location = useLocation();
   const [infos, setInfos] = useState([]);
@@ -55,15 +55,11 @@ function Fetch({ showSearch }) {
   }, [pageNum, location]);
 
   const searchAnimation = async () => {
-    let search = document.querySelector(".searchBar");
-    let bar = document.querySelector(".searchBar2");
     setLoadMain(true);
     setLoad4(true);
-    search.classList.add("goAway");
-    bar.classList.add("goAway");
+    setShowSearch(false)
     await delay(5000);
     setLoad4(false);
-    search.classList.add("hidden");
     await delay(1000);
     setLoadMain(false);
   };
