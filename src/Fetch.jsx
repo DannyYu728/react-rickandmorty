@@ -12,6 +12,8 @@ function Fetch() {
   const [pageNum, setPageNum] = useState(1);
   const [pageCount, setPageCount] = useState(0);
   const [searchName, setSearch] = useState("");
+  const [modalToggle, setModalToggle] = useState(false);
+  const [innerModalToggle, setInnerModalToggle] = useState(false);
 
   let pageDown = () => {
     if (pageNum > pageCount) {
@@ -52,8 +54,8 @@ function Fetch() {
 
   const searchAnimation = async () => {
     let div = document.querySelector(".load");
-    let search = document.querySelector(".searchBar")
-    let bar = document.querySelector(".searchBar2")
+    let search = document.querySelector(".searchBar");
+    let bar = document.querySelector(".searchBar2");
     let load3 = document.querySelector(".load3");
     let load4 = document.querySelector(".load4");
     div.classList.remove("hidden");
@@ -64,7 +66,7 @@ function Fetch() {
     load3.classList.add("invis");
     load4.classList.add("invis");
     await delay(2000);
-    div.classList.add("hidden")
+    div.classList.add("hidden");
     load3.classList.remove("invis");
     load4.classList.remove("invis");
   };
@@ -82,13 +84,27 @@ function Fetch() {
     e.preventDefault();
     setSearch(e.target.value);
   };
+
+  // let getModal = async (ele) => {
+  //   let main = document.querySelector(".mainModal");
+  //   let modal = document.querySelector(".modal");
+  //   setModalInfo(ele);
+  //   main.classList.remove("hidden");
+  //   await delay(1700);
+  //   modal.classList.remove("hidden");
+  // };
+
   let getModal = async (ele) => {
-    let main = document.querySelector(".mainModal");
-    let modal = document.querySelector(".modal");
-    setModalInfo(ele);
-    main.classList.remove("hidden");
-    await delay(1700);
-    modal.classList.remove("hidden");
+    if (!modalToggle) {
+      setModalInfo(ele);
+      setModalToggle(true);
+      await delay(1700);
+      setInnerModalToggle(true);
+
+    } else {
+      setModalToggle(false);
+      setInnerModalToggle(false)
+    }
   };
 
   return (
@@ -134,7 +150,7 @@ function Fetch() {
         </form>
         <div className="btns next" onClick={pageUp}></div>
       </div>
-      <Modal modalInfo={modalInfo} />
+      {modalToggle && <Modal modalInfo={modalInfo} getModal={getModal} innerModalToggle={innerModalToggle} />}
       <div className="load hidden">
         <div className=" load1 "></div>
         <div className=" load2 "></div>

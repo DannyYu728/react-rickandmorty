@@ -4,24 +4,27 @@ const alts =
   "https://rare-gallery.com/thumbs/5001877-rick-and-morty-cartoons-tv-shows-hd-rick-morty-animated-tv-series-4k-artwork-artist-digital-art-behance.jpg";
 
 function Modal(props) {
-  const { modalInfo } = props;
+  const { modalInfo, getModal, innerModalToggle } = props;
   const { id } = useParams();
   const chTitles = ["Status", "Species"];
   const loTitles = ["Type", "Dimension"];
   const epTitles = ["Air Date", "Episodes"];
 
+  // const hideModal = () => {
+  //   document.querySelector(".mainModal").classList.add("hidden")
+  //   document.querySelector(".modal").classList.add("hidden")
+  // }
+
   const hideModal = () => {
-    document.querySelector(".mainModal").classList.add("hidden")
-    document.querySelector(".modal").classList.add("hidden")
   }
 
   return (
     <div
-      className="mainModal hidden"
-      onClick={hideModal}>
+      className="mainModal"
+      onClick={getModal}>
       <div className="left"></div>
       <div className="right"></div>
-      {(() => {
+      {innerModalToggle && (() => {
         if (id == "character") {
           return (
             <ModInfo
