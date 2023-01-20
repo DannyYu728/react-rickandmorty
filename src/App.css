@@ -225,7 +225,28 @@ img {
   height: 105vh;
   width: 25%;
   background-color: green;
-  animation: 4s slidedown ease;
+  animation: 5s slidedown4 ease;
+}
+
+@keyframes slidedown4 {
+  0% {
+    transform: translateY(-1400px);
+    opacity: 1;
+  }
+  30% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  60% {
+    transform: translateY(-1400px);
+    opacity: 1;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 .left,

@@ -10,14 +10,6 @@ function Modal(props) {
   const loTitles = ["Type", "Dimension"];
   const epTitles = ["Air Date", "Episodes"];
 
-  // const hideModal = () => {
-  //   document.querySelector(".mainModal").classList.add("hidden")
-  //   document.querySelector(".modal").classList.add("hidden")
-  // }
-
-  const hideModal = () => {
-  }
-
   return (
     <div
       className="mainModal"
@@ -25,7 +17,7 @@ function Modal(props) {
       <div className="left"></div>
       <div className="right"></div>
       {innerModalToggle && (() => {
-        if (id == "character") {
+        if (id === "character") {
           return (
             <ModInfo
               urls={modalInfo.image}
@@ -36,7 +28,7 @@ function Modal(props) {
               titles={chTitles}
             />
           );
-        } else if (id == "location") {
+        } else if (id === "location") {
           return (
             <ModInfo
               urls={alts}

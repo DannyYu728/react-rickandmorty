@@ -14,6 +14,8 @@ function Fetch() {
   const [searchName, setSearch] = useState("");
   const [modalToggle, setModalToggle] = useState(false);
   const [innerModalToggle, setInnerModalToggle] = useState(false);
+  const [loadMain, setLoadMain] = useState(false)
+  const [load4, setLoad4] = useState(false)
 
   let pageDown = () => {
     if (pageNum > pageCount) {
@@ -52,24 +54,39 @@ function Fetch() {
     getPage();
   }, [pageNum, location]);
 
+  // const searchAnimation = async () => {
+  //   let div = document.querySelector(".load");
+  //   let search = document.querySelector(".searchBar");
+  //   let bar = document.querySelector(".searchBar2");
+  //   let load3 = document.querySelector(".load3");
+  //   let load4 = document.querySelector(".load4");
+  //   div.classList.remove("hidden");
+  //   search.classList.add("goAway");
+  //   bar.classList.add("goAway");
+  //   await delay(4000);
+  //   search.classList.add("hidden");
+  //   load3.classList.add("invis");
+  //   load4.classList.add("invis");
+  //   await delay(2000);
+  //   div.classList.add("hidden");
+  //   load3.classList.remove("invis");
+  //   load4.classList.remove("invis");
+  // };
+
   const searchAnimation = async () => {
-    let div = document.querySelector(".load");
     let search = document.querySelector(".searchBar");
     let bar = document.querySelector(".searchBar2");
-    let load3 = document.querySelector(".load3");
-    let load4 = document.querySelector(".load4");
-    div.classList.remove("hidden");
+    setLoadMain(true)
+    setLoad4(true)
     search.classList.add("goAway");
     bar.classList.add("goAway");
-    await delay(4000);
+    await delay(5000)
+    setLoad4(false)
     search.classList.add("hidden");
-    load3.classList.add("invis");
-    load4.classList.add("invis");
-    await delay(2000);
-    div.classList.add("hidden");
-    load3.classList.remove("invis");
-    load4.classList.remove("invis");
+    await delay(1000);
+    setLoadMain(false)
   };
+
 
   const searchFetch = async (e) => {
     e.preventDefault();
@@ -84,15 +101,6 @@ function Fetch() {
     e.preventDefault();
     setSearch(e.target.value);
   };
-
-  // let getModal = async (ele) => {
-  //   let main = document.querySelector(".mainModal");
-  //   let modal = document.querySelector(".modal");
-  //   setModalInfo(ele);
-  //   main.classList.remove("hidden");
-  //   await delay(1700);
-  //   modal.classList.remove("hidden");
-  // };
 
   let getModal = async (ele) => {
     if (!modalToggle) {
@@ -127,7 +135,7 @@ function Fetch() {
             <div key={index} className="info" onClick={() => getModal(ele)}>
               {(() => {
                 if (id === "character") {
-                  return <img src={ele.image} />;
+                  return <img src={ele.image} alt="Stuff" />;
                 } else {
                   return <p>{ele.name}</p>;
                 }
@@ -151,12 +159,12 @@ function Fetch() {
         <div className="btns next" onClick={pageUp}></div>
       </div>
       {modalToggle && <Modal modalInfo={modalInfo} getModal={getModal} innerModalToggle={innerModalToggle} />}
-      <div className="load hidden">
+      {loadMain && <div className="load">
         <div className=" load1 "></div>
         <div className=" load2 "></div>
-        <div className=" load3 "></div>
-        <div className=" load4 "></div>
-      </div>
+        {load4 && <div className=" load3 "></div>}
+        {load4 && <div className=" load4 "></div>}
+      </div>}
     </div>
   );
 }
