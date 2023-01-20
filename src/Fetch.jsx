@@ -4,7 +4,7 @@ import { useParams, useLocation } from "react-router-dom";
 import axios from "axios";
 const ramUrl = "https://rickandmortyapi.com/api/";
 
-function Fetch() {
+function Fetch({ showSearch }) {
   const { id } = useParams();
   const location = useLocation();
   const [infos, setInfos] = useState([]);
@@ -14,8 +14,8 @@ function Fetch() {
   const [searchName, setSearch] = useState("");
   const [modalToggle, setModalToggle] = useState(false);
   const [innerModalToggle, setInnerModalToggle] = useState(false);
-  const [loadMain, setLoadMain] = useState(false)
-  const [load4, setLoad4] = useState(false)
+  const [loadMain, setLoadMain] = useState(false);
+  const [load4, setLoad4] = useState(false);
 
   let pageDown = () => {
     if (pageNum > pageCount) {
@@ -54,39 +54,19 @@ function Fetch() {
     getPage();
   }, [pageNum, location]);
 
-  // const searchAnimation = async () => {
-  //   let div = document.querySelector(".load");
-  //   let search = document.querySelector(".searchBar");
-  //   let bar = document.querySelector(".searchBar2");
-  //   let load3 = document.querySelector(".load3");
-  //   let load4 = document.querySelector(".load4");
-  //   div.classList.remove("hidden");
-  //   search.classList.add("goAway");
-  //   bar.classList.add("goAway");
-  //   await delay(4000);
-  //   search.classList.add("hidden");
-  //   load3.classList.add("invis");
-  //   load4.classList.add("invis");
-  //   await delay(2000);
-  //   div.classList.add("hidden");
-  //   load3.classList.remove("invis");
-  //   load4.classList.remove("invis");
-  // };
-
   const searchAnimation = async () => {
     let search = document.querySelector(".searchBar");
     let bar = document.querySelector(".searchBar2");
-    setLoadMain(true)
-    setLoad4(true)
+    setLoadMain(true);
+    setLoad4(true);
     search.classList.add("goAway");
     bar.classList.add("goAway");
-    await delay(5000)
-    setLoad4(false)
+    await delay(5000);
+    setLoad4(false);
     search.classList.add("hidden");
     await delay(1000);
-    setLoadMain(false)
+    setLoadMain(false);
   };
-
 
   const searchFetch = async (e) => {
     e.preventDefault();
@@ -108,27 +88,28 @@ function Fetch() {
       setModalToggle(true);
       await delay(1700);
       setInnerModalToggle(true);
-
     } else {
       setModalToggle(false);
-      setInnerModalToggle(false)
+      setInnerModalToggle(false);
     }
   };
 
   return (
     <div className="page">
-      <div className="searchBar hidden goAway">
-        <form onSubmit={searchFetch}>
-          <input
-            className="searchBar2 goAway"
-            type="text"
-            maxLength="20"
-            value={searchName}
-            onChange={handleSearch}
-            placeholder="Search..."
-          />
-        </form>
-      </div>
+      {showSearch && (
+        <div className="searchBar">
+          <form onSubmit={searchFetch}>
+            <input
+              className="searchBar2"
+              type="text"
+              maxLength="20"
+              value={searchName}
+              onChange={handleSearch}
+              placeholder="Search..."
+            />
+          </form>
+        </div>
+      )}
       <div className="display">
         {infos.map((ele, index) => {
           return (
@@ -158,13 +139,21 @@ function Fetch() {
         </form>
         <div className="btns next" onClick={pageUp}></div>
       </div>
-      {modalToggle && <Modal modalInfo={modalInfo} getModal={getModal} innerModalToggle={innerModalToggle} />}
-      {loadMain && <div className="load">
-        <div className=" load1 "></div>
-        <div className=" load2 "></div>
-        {load4 && <div className=" load3 "></div>}
-        {load4 && <div className=" load4 "></div>}
-      </div>}
+      {modalToggle && (
+        <Modal
+          modalInfo={modalInfo}
+          getModal={getModal}
+          innerModalToggle={innerModalToggle}
+        />
+      )}
+      {loadMain && (
+        <div className="load">
+          <div className=" load1 "></div>
+          <div className=" load2 "></div>
+          {load4 && <div className=" load3 "></div>}
+          {load4 && <div className=" load4 "></div>}
+        </div>
+      )}
     </div>
   );
 }

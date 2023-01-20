@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import Character from "./Character";
 import Episode from "./Episode";
@@ -8,11 +9,20 @@ import Navbar from "./Navbar";
 
 function Wrapper() {
   const { id } = useParams();
+  const [showSearch, setShowSearch] = useState(false)
+
+  let show = async () => {
+    if (!showSearch) {
+      setShowSearch(true)
+    } else {
+      setShowSearch(false)
+    }
+  };
 
   return (
     <div className="wrapper">
-      <Navbar />
-      <Fetch />
+      <Navbar show={show} />
+      <Fetch showSearch={showSearch} />
       {(() => {
         if (id == "character") {
           return <Character />;

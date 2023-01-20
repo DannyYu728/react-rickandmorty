@@ -20,7 +20,7 @@ const Title = styled.div`
   color: #97ce4c;
 `;
 
-function Navbar() {
+function Navbar({show}) {
   const [title, setTitle] = useState("");
   const { id } = useParams();
 
@@ -31,28 +31,28 @@ function Navbar() {
     changeTitle();
   }, [id]);
 
-  const delay = (duration) => {
-    return new Promise((res) => {
-      setTimeout(res, duration);
-    });
-  };
+  // const delay = (duration) => {
+  //   return new Promise((res) => {
+  //     setTimeout(res, duration);
+  //   });
+  // };
 
-  let show = async () => {
-    const bar = document.querySelector(".searchBar");
-    const bar2 = document.querySelector(".searchBar2");
-    if (id == null) {
-      return
-    } else if (bar.classList.contains("hidden")) {
-      bar.classList.remove("hidden");
-      bar.classList.remove("goAway");
-      bar2.classList.remove("goAway");
-    } else {
-      bar.classList.add("goAway");
-      bar2.classList.add("goAway");
-      await delay(1500);
-      bar.classList.add("hidden");
-    }
-  };
+  // let show = async () => {
+  //   const bar = document.querySelector(".searchBar");
+  //   const bar2 = document.querySelector(".searchBar2");
+  //   if (id == null) {
+  //     return
+  //   } else if (bar.classList.contains("hidden")) {
+  //     bar.classList.remove("hidden");
+  //     bar.classList.remove("goAway");
+  //     bar2.classList.remove("goAway");
+  //   } else {
+  //     bar.classList.add("goAway");
+  //     bar2.classList.add("goAway");
+  //     await delay(1500);
+  //     bar.classList.add("hidden");
+  //   }
+  // };
 
   return (
     <div className="navBar">
